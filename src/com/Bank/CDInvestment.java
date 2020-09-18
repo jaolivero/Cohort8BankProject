@@ -19,3 +19,4 @@ public class CDInvestment extends InvestmentAccount {
     public void withdraw(int amt) {
         return;
     }
+}
