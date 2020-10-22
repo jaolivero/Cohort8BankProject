@@ -6,6 +6,7 @@ public class BankAccount {
     protected int balance;
     private String type;
 
+
     public BankAccount(int accountNum, int balance, String owner, String type) {
         this.accountNum = accountNum;
         this.balance = balance;
