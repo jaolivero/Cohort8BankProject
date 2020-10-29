@@ -1,6 +1,6 @@
 package com.Bank;
 
-public class BankAccount {
+public class BankAccount implements Account {
     private int accountNum;
     private String owner;
     protected int balance;
