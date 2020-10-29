@@ -27,4 +27,11 @@ public class DebitCard {
         }
         return false;
     }
+    public void addAccount(Account account) {
+        atmAccounts.add(account);
+    }
+
+    public String toString() {
+        return "cardNum: " + cardNum;
+    }
 }

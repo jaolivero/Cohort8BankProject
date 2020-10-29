@@ -24,11 +24,12 @@ public class Bank {
         // TODO: get client
         // TODO: create account giving it the client.
         Account newAccount = new Account();
+
     }
 
     public Account createAccount() {}
 
-    public SavingsAccount creatsSavingsAccount() {};
-    public CheckingAccount creactCheckingAccount() {};
+    public SavingsAccount createSavingsAccount() {};
+    public CheckingAccount createCheckingAccount() {};
 }
 
