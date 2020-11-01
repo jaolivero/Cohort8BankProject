@@ -1,9 +1,5 @@
 package com.Bank;
 
-import Account;
-import CheckingAccount;
-import SavingsAccount;
-
 import java.util.HashMap;
 
 public class Bank {
@@ -20,16 +16,37 @@ public class Bank {
         accounts = new HashMap<>();
     }
 
-    public void addAccount() {
+    public void addAccount(String clientId, String accountType, int startingBal, UI ui) {
         // TODO: get client
         // TODO: create account giving it the client.
-        Account newAccount = new Account();
-
+        // TODO: get client from client collection
+        Client client = clients.get(clientId);
+        // TODO: create account giving it the client.
+        Account newAccount = createAccount(accountType, client, ++accountCount, startingBal, ui);
+        // TODO: attach to accounts collection
+        client.addAccount(newAccount);
+        accounts.put(accountCount, newAccount);
     }
 
-    public Account createAccount() {}
+    public Account createAccount(String accountType, Client client, int accountId, int startingBal, UI ui) {
+        switch (accountType) {
+            case "checking":
+                return new CheckingAccount(accountId, startingBal, client);
+            case "savings":
+                int interest = ui.requestInt("Please enter interest rate:");
+                return new SavingsAccount(accountId, startingBal, client, interest);
+            default:
+                return null;
+        }
+    }
 
-    public SavingsAccount createSavingsAccount() {};
-    public CheckingAccount createCheckingAccount() {};
-}
+    public void displayClients() {
+        for (var client : clients.keySet()){
+            System.out.println(clients.get(client));
+        }
+    }
+
+    public Account getAccount(int accountId) {
+        return accounts.get(accountId);
+    }
 

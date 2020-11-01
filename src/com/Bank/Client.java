@@ -1,6 +1,10 @@
 package com.Bank;
 
-import java.util.*;
+import BankTools.DebitCard;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class Client {
     private String name;
@@ -9,18 +13,19 @@ public class Client {
     private String clientId;
     private Account account;
     private HashMap<Integer, Account> accounts;
-    private List<DebitCard> cards;
+    private List<DebitCard> debitCards;
 
-    public Client(String name, List<BankAccount> accounts) {
+    public Client(String firstName, String lastName, String clientId) {
+        this.name = firstName + " " + lastName;
         this.firstName = firstName;
         this.lastName = lastName;
         this.clientId = clientId;
-        accounts = new HashMap<Integer, Account>();
-        cards = new ArrayList<DebitCard>();
+        accounts = new HashMap<>();
+        debitCards = new ArrayList<DebitCard>();
     }
 
     public void addAccount(Account account) {
-        accounts.put(account.getAccountNumber(), account);
+        accounts.put(account.getAccountNum(), account);
     }
 
     public void addDebitCard(int accountNum) {
@@ -44,6 +49,10 @@ public class Client {
             cardsOutput += debitCard.toString();
         }
         return "Accounts of " + name + "\n" + output + "Cards\n" + cardsOutput;
+    }
+
+    public String getName() {
+        return firstName + " " + lastName;
     }
 
 }

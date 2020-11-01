@@ -1,4 +1,8 @@
-package com.Bank;
+package BankTools;
+
+import com.Bank.Account;
+import com.Bank.CheckingAccount;
+import com.Bank.SavingsAccount;
 
 import java.util.*;
 
@@ -9,20 +13,20 @@ public class DebitCard {
     private String cvv;
     private String cardOwner;
     private String cardNum;
-    private List<SavingsAccount> atmAccounts;
+    private List<Account> atmAccounts;
 
-    public DebitCard(String cardNum, String pin, String cvv, String cardOwner, CheckingAccount primary, List atmAccounts) {
+    public DebitCard(String cardNum, String pin, String cvv, String cardOwner, CheckingAccount primary) {
         this.cardNum = cardNum;
         this.pin = pin;
         this.cvv = cvv;
         this.cardOwner = cardOwner;
         this.primary = primary;
-        this.atmAccounts = atmAccounts;
+        this.atmAccounts = new ArrayList<>();
     }
 
     public Boolean charge(int amt, String pin) {
-        if (this.pin == pin && primary.balance >= amt) {
-            primary.balance -= amt;
+        if (this.pin == pin && primary.getBalance() >= amt) {
+            primary.withdraw(amt);
             return true;
         }
         return false;

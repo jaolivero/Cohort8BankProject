@@ -1,8 +1,6 @@
 package com.Bank;
 
-import com.Bank.CheckingAccount;
-import com.Bank.SavingsAccount;
-import com.Bank.DebitCard;
+import BankTools.DebitCard;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,8 +26,7 @@ public class Main {
                 "1234",
                 "223",
                 "Cliff",
-                myCheck,
-                new ArrayList<SavingsAccount>(Arrays.asList(myAcct, savings2))
+                myCheck
         );
         System.out.println(myCheck.getDetails());
         System.out.println(myCard.charge(50, "1234") ? "Approved" : "Declined");
